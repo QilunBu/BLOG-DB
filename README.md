@@ -258,6 +258,16 @@ SELECT SIGN(0)    --0 RETURN 0
 
 STRING function:
 SELECT CHAR_LENGTH('hellio')  --RETURN THE LENGTH OF THE STRING 6
+SELECT CONCAT('I', 'LOVE', 'U')   --CONCAT the content in the ''
+SELECT INSERT('ILOVECODINGhelloworld', 1, 2, 'howru')  --USE THE LAST CONTENT REPLACE FRONT CONTENT, START FROM 1, END TO WHERE, THE CONTENT LISTED WILL BE REPLACED BY THE LAST CONTENT.
+SELECRT LOWER(TryndamereBQL)  --change the content to lower case
+SELECT UPPER(TryndamereBQL)    --change the content to upper case
+SELECT INSTR('TryndamereBQL', 'BQL')   --show the index of substring 'BQL' appear in the string 'tryndamerebql'.
+SELECT REPLACE('ILOVE CODING', 'CODING', 'PLAYING')    --use PLAYING replace CODING
+SELECT SUBSTR('ILOVECODING', 4, 3)   --return the string hyou want, 4 means starting index and 3 means how long the string u want
+SELECT REVERSE('ILOVECODING')     --reverse the content
+SELECT CURRENT_DATE()   --get current date 
+SELECT LOCALTIME()   --get lical time
 
 
 
