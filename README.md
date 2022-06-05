@@ -270,6 +270,32 @@ SELECT CURRENT_DATE()   --get current date
 SELECT LOCALTIME()   --get lical time
 
 
+Aggregate function
+COUNT()            --count number
+SUM()              --total number
+AVG()              --average value
+MAX()              --max num
+MIN()              --min value
+
+SELECT COUNT(studentName) FROM studenbt;  --COUNT(fieldname)  ignore all the NULL value
+SELECT COUNT(*) FROM studenbt;            --COUNT(*) count all inculde null value
+SELECT COUNT(1) FROM studenbt;            --COUNT(1) count all inculde null value
+
+SELECT SUM(`studentResult`) AS `total` FROM result   --result total
+SELECT AVG(`studentResult`) AS `average` FROM result   --result average
+SELECT MAX(`studentResult`) AS `max` FROM result   --result max
+SELECT MIN(`studentResult`) AS `min` FROM result   --result min
+
+TRANSITION PROCESSING:
+ATOMICITY:  transition successful together or fail together
+CONSISTENCY: before operation and after operation, keep same total
+ISOLATION: 
+DURABILITY: transactin not commit, roll back.  transactin committed, save to file and not changed. traactin commited, cant be rolled back.
+
+
+INDEX:
+CREATE INDEX id_app_user_name ON app_user(`name`);  --CREATE INDEX index name  ON table(field name)
+
 
 
 
