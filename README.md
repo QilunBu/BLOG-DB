@@ -204,6 +204,61 @@ WHERE studentResult IS NULL
 JOIN ON    JOIN(link tables) ON(constrains)--link query
 WHERE --equal query
 
+Three tables join search:
+Make sure what information you want, base on the information you want, select tables. 
+
+sassume that the information we want is .
+**studentId belongs to the table Student and table result. SubjectNo belongs to table result and table subject**
+what we want to do is find ways to join all these tables together.
+
+SELECT s.studentId, studentName, seubjectNo, stuntResult    --just select these first, then we will make sure each detail during the join
+FROM student AS s 
+RIGHT JOIN result AS r
+ON s.studentID = r.studentID    --at this stage, there  will be confuse about the studentID, so we need to make sure which studentNo.
+                               --also at this stage, we get a new table, base on this table we go to join another table to create a new table
+INNER JOIN `subject` AS sub    --we already have s for student table, at this stage, we will keep use sub as new name for subject. 
+ON r.subjectNo = sub.subjectNo --like we did past, we need to find a new link point for the new table and the previous two joined table we choosed.
+
+
+ORDER BY:
+based on the constrain to order the results. DESC to order the result from high to low. ASC to order the result from high to low.
+ORDER BY studentResult DESC  --order the result based on the result of score, from high to low.
+
+SELECT s.studentId, studentName, seubjectNo, stuntResult 
+FROM student AS s 
+RIGHT JOIN result AS r
+ON s.studentID = r.studentID   
+INNER JOIN `subject` AS sub   
+ON r.subjectNo = sub.subjectNo
+OEDER BY studentResult DESC
+
+SEPERATE PAGE:
+LIMIT num1, num2  --num1: means the start position of the result (1st position start at 0)
+                  --num2: means that how many results on this page.
+
+SELECT s.studentId, studentName, seubjectNo, stuntResult 
+FROM student AS s 
+RIGHT JOIN result AS r
+ON s.studentID = r.studentID   
+INNER JOIN `subject` AS sub   
+ON r.subjectNo = sub.subjectNo
+WHERE subjectNo = 'XXXXX'
+OEDER BY studentResult DESC
+LIMIT 0, 5   --start position is the first one and the size of this page is 5.
+
+MYSQL function:
+MATH :
+SELECT ABS(-8) --8
+SELECT CEILING(9.4) --10
+SELECT FLOOR(9.4) --9
+SELECT RAND  --OUTPUT IS A RANDOM NUMBER BETWEEN 0-1
+SELECT SIGN(-10)  --NEGATIVE RETURN -1
+SELECT SIGN(10)   --POSITIVE RETURN 1
+SELECT SIGN(0)    --0 RETURN 0
+
+STRING function:
+SELECT CHAR_LENGTH('hellio')  --RETURN THE LENGTH OF THE STRING 6
+
 
 
 
