@@ -297,10 +297,77 @@ INDEX:
 CREATE INDEX id_app_user_name ON app_user(`name`);  --CREATE INDEX index name  ON table(field name)
 
 
+JDBC:
+application cannot directly connect to the database, need a deive to link.
+
+First JDBC project:
+1. create a normal database
+
+
+CREATE DATABASE jdbcStudy CHARSET SET utf8 COLLATE utf8_general_ci;
+USE jdbcStudy;
+CREATE TABLE users(
+	`id` INT PRIMARY KEY,
+	`name` VARCHAR(40),
+	`password` VARCHAR(40),
+	`email` VARCHAR(60),
+	`birthday` DATE
+);
+
+INSERT INTO users(`id`, `name`, `password`, `email`, `birthday`)
+VALUES(1, 'zhangsan', '123456', 'zs@sina.com', '1980-12-04'), (2, 'lisi', '123456', 'lisi@sina.com', '1981-12-04'), (3, 'wangwu', '123456', 'wangwu@sina.com', '1979-12-04');
+
+
+2.import database drive:
+import mysql-connector-java-5.1.47.jar into a lib dir which is created under the project, copy it to the dir and add it as a library, then this step finish.
+
+3.steps conclusion:
+package com.qilun.lesson01;
+
+import java.sql.*;
+
+//my first jdbc project
+public class jdbcFirstDemo {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        //1.load driver
+        Class.forName("com.mysql.jdbc.Driver"); //fixed writing, load driver
+
+        //2.use user info and url link to database
+        String url = "jdbc:mysql://localhost:3306/jdbcStudy?useUnicode=true&characterEncoding=utf8&userSSL=true";
+        String username = "root";
+        String password = "hsp";
+
+        //3.connect success, database obj
+        Connection connection = DriverManager.getConnection(url, username, password);
+
+        //4.get sql statement
+        Statement statement = connection.createStatement();
+
+        //5.see the result
+        String sql = "SELECT * FROM users";
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()){
+            System.out.println("id=" + resultSet.getObject("id"));
+            System.out.println("name=" + resultSet.getObject("name"));
+            System.out.println("password=" + resultSet.getObject("password"));
+            System.out.println("email=" + resultSet.getObject("email"));
+            System.out.println("birthday=" + resultSet.getObject("birthday"));
+        }
+        //6.release connection
+        resultSet.close();
+        statement.close();
+        connection.close();
 
 
 
 
+
+    }
+}
+
+
+
+Statement operate SQL object: prepareStatement
 
 
 
