@@ -368,7 +368,9 @@ public class jdbcFirstDemo {
 
 
 Statement operate SQL object: prepareStatement
-
+Statement is used to send sql request to the database.
+statement.executeUpdate(): send crud request to the database
+statement.executeQuery(): send query language the the database.
 
 
 
